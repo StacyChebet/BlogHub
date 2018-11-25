@@ -33,5 +33,25 @@ class User(db.Model):
     def verify_password(self, password):
         return check_password_hash(self.pass_hash, password)
 
+    def get_blogs(self):
+        user = User.query.filter_by(id=self.id).first()
+        return user.blog
+
     def __repr__(self):
         return f'User {self.username}'
+
+class Blog(db.Model):
+    '''
+    Pitch class to define pitch objects
+    '''
+    __tablename__ = "blogs"
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    title = db.Column(db.String)
+    category = db.Column(db.String)
+    pitch = db.Column(db.String(255))
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def save_blog(self):
+        db.session.add(self)
+        db.session.commit()
