@@ -5,7 +5,7 @@ class Config:
     Configuration parent class
     '''
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    # SQLALCHEMY_DATABASE_URI = 'postgres'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://stacy:stacy@localhost/blog'
 
 class ProdConfig(Config):
     pass
