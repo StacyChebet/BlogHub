@@ -5,3 +5,13 @@
 {{ super() }}
 <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
 {% endblock%}
+
+{%block content%}
+    <div class="container">
+        <div class = "top">
+            <img src = "../static/images/me.jpg">
+            <h1>BLOG HUB</h1>
+
+        </div>
+    </div>
+{% endblock %}
