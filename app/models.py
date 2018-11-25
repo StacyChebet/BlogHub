@@ -15,8 +15,20 @@ class User(db.Model):
     email = db.Column(db.String(255), unique=True, index=True)
     profile = db.Column(db.String)
     prof_pic = db.Column(db.String())
+    blog_post = db.relationship("Blog", backref="user", lazy="dynamic")
     pass_hash = db.column(db.String(255))
 
-    
+    def save_user(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @property
+    def password(self):
+        raise AttributeError('Stick to your lane!')
+
+    @password.setter
+    def password(self, password):
+        self.pass_hash = generate_password_hash(password)
+
     def __repr__(self):
         return f'User {self.username}'
