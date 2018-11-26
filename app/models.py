@@ -8,15 +8,16 @@ from datetime import datetime
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-class User(db.Model):
+class User(UserMixin,db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key = True)
+    role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
     username = db.Column(db.String(255))
     email = db.Column(db.String(255), unique=True, index=True)
     profile = db.Column(db.String)
     prof_pic = db.Column(db.String())
-    blog_post = db.relationship("Blog", backref="user", lazy="dynamic")
-    pass_hash = db.column(db.String(255))
+    blog = db.relationship("Blog", backref="user", lazy="dynamic")
+    pass_hash = db.Column(db.String(255))
 
     def save_user(self):
         db.session.add(self)
@@ -37,8 +38,18 @@ class User(db.Model):
         user = User.query.filter_by(id=self.id).first()
         return user.blog
 
+
+class Role(db.Model):
+    '''
+    Defines the roles
+    '''
+    __tablename__ = "roles"
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255))
+
     def __repr__(self):
-        return f'User {self.username}'
+        return f'User {self.name}'
+
 
 class Blog(db.Model):
     '''
@@ -49,7 +60,7 @@ class Blog(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     title = db.Column(db.String)
     category = db.Column(db.String)
-    pitch = db.Column(db.String(255))
+    blog = db.Column(db.String)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
     def save_blog(self):
