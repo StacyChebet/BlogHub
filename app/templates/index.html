@@ -4,14 +4,14 @@
 {% block styles%}
 {{ super() }}
 <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
-{% endblock%}
+{% endblock %}
 
 {%block content%}
     <div class="container">
         <div class = "top">
-            <img src = "../static/images/me.jpg">
-            <h1>BLOG HUB</h1>
-
+            <img src = "../static/images/me.jpg" class="img img-responsive" style="margin-right: 40%;margin-left: 40%;"><h1 style="text-align:center">BLOG HUB</h1>
         </div>
     </div>
-{% endblock %}
+
+    
+{% endblock%}

@@ -1,0 +1,4 @@
+Hello {{user.username}}!
+Welcome to the BlogHub!!
+I hope you are ready to read awesome blogs and get ideas to create your own
+Feel free to give out feedback in the comment section, whethere positive or negative
