@@ -15,6 +15,12 @@ class AddBlog(FlaskForm):
     submit = SubmitField('Post')
 
 
+class AddComment(FlaskForm):
+    Name = StringField('Your Name', validators=[Required()])
+    email = StringField('Email', validators=[Required(), Email()])
+    comment = TextAreaField('Comment', validators=[Required()])
+    submit = SubmitField('Add your Comment')
+
 
     
 
