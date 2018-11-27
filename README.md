@@ -6,7 +6,7 @@ This application was created on 16th September 2018.
 STACY CHEBET
 
 ## Link to Deployed Site on Heroku
-
+https://bloghub.herokuapp.com/
 
 ## Description
 This is a personal blogging website that enables creation and sharing of my thoughts and users can read and comment on them.
