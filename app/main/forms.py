@@ -10,7 +10,7 @@ class AddBlog(FlaskForm):
     title = StringField('Title', validators=[Required()])
     category = SelectField('Category', choices=[('politics', 'Politics'), ('fashion', 'Fashion'), (
         'travel', 'Travel')], validators=[Required()])
-    photo = FileField('Select an image', validators=[Required()])
+    blog_photo = FileField('Select an image', validators=[Required()])
     content = TextAreaField('Blog', validators=[Required()])
     submit = SubmitField('Post')
 
@@ -20,6 +20,12 @@ class AddComment(FlaskForm):
     email = StringField('Email', validators=[Required(), Email()])
     comment = TextAreaField('Comment', validators=[Required()])
     submit = SubmitField('Add your Comment')
+
+class AddSubscriber(FlaskForm):
+    name = StringField('Your Name', validators=[Required()])
+    email = StringField('Your email address', validators=[Required(), Email()])
+    submit = SubmitField('Subscribe')
+
 
 
     
