@@ -1,6 +1,4 @@
 # BLOG HUB
-This application was created on 16th September 2018.
-
 
 # Author
 STACY CHEBET
